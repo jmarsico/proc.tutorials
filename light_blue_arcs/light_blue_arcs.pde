@@ -1,19 +1,21 @@
 float arcStart = 0.0;
 float arcEnd = 5.18;
 
-size (1000, 800);
+size (800, 800);
 
 //ellipse( 400, 300, 700, 500);
-background(255);
+background(0);
 noFill();
 
 
-for (int i = 0; i < 1000; i++){
+for (int i = 0; i < 10000; i++){
 
-strokeWeight(random(0.3, 1.0));
+strokeWeight(random(0.3, 0.7));
 
-stroke(random(200, 240), random(200, 240), random(200, 255), random(30,255));
-arc (random(width - 30), random(height - 30), 100, 100, (random(0.0, 6.28)), random(0.0, 6.28));
+float rArc = random(0.0, 6.28);
+
+stroke(random(200, 201), random(200, 201), random(200, 255), random(30, 80));
+arc (random(200, width - 200), random(200, height - 200), 100, 100, rArc, rArc + 1.0);
 
 
 
