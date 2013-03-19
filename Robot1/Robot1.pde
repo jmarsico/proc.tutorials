@@ -1,25 +1,39 @@
 int x = 60;             // x - coordinate
-int y = 420;            //y -coordinate
-int bodyHeight = 110;   // body height
-int neckHeight = 140;   //neck height
+int y = 440;            //y -coordinate
 int radius = 45;        //head radius
-int ny = y - bodyHeight - neckHeight - radius; //neck y
+int bodyHeight = 160;   // body height
+int neckHeight = 70;   //neck height
 
+float easing = 0.02;
 
+void setup() {
+  size(360, 480);
+  smooth();
+  strokeWeight(2);
+  ellipseMode(RADIUS);
+}
 
-
-size(170, 480);
-smooth();
-strokeWeight(2);
-background(255);
-ellipseMode(RADIUS);
+void draw() {
+  int targetX = mouseX;
+  x += (targetX - x) * easing;
+  
+  if (mousePressed) {
+    neckHeight = 16;
+    bodyHeight = 90;
+  } else {
+    neckHeight = 70;
+    bodyHeight = 160;
+  }
+  
+  float ny = y - bodyHeight - neckHeight - radius;
+  
+  background(204);
 
 
 //Neck
-stroke(100, 100, 255, 150);
-line(x+2, y-bodyHeight, x+2, ny);
-line(x+12, y-bodyHeight, x+12, ny);
-line(x+22, y-bodyHeight, x+22, ny);
+stroke(102);
+line(x+12, y-bodyHeight, x+2, ny);
+
 
 
 //antennae
@@ -34,8 +48,8 @@ fill(102);
 ellipse(x, y-33, 33, 33);
 fill(0);
 rect(x-45, y-bodyHeight, 90, bodyHeight-33);
-fill(102);
-rect(x-45, y-bodyHeight+17, 90, 6);
+//fill(102);
+//rect(x-45, y-bodyHeight+17, 90, 6);
 
 //head
 fill(0);
@@ -44,9 +58,13 @@ fill(255);
 ellipse(x+24, ny-6, 14, 14);
 fill(0);
 ellipse(x+24, ny-6, 3, 3);
+/*
+//eyes
 fill(153);
 ellipse(x, ny-8, 5, 5);
 ellipse(x+30, ny-26, 4, 4);
 ellipse(x+41, ny+6, 3, 3);
 
+*/
 
+}

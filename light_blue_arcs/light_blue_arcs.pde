@@ -43,14 +43,14 @@ arc (random(200, width - 200), random(200, height - 200), 100, 100, rArc, rArc +
 }
 
 void keyPressed(){
-  if (key == ' '){
+  if (key == '1'){
     phase = 1;
   } 
+  if (key == '0'){
+    phase = 0;
  
 }
 
-void mousePressed(){
-  phase = 0;
 }
 /*
 stroke(100, 200, 255, 100);
