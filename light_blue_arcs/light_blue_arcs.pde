@@ -11,24 +11,19 @@ noFill();
 void draw (){
   if(phase == 0){
     bArc();
-  }
-  else if (phase == 1){ 
+  }else if (phase == 1){ 
     zArc();
-}
+  }
 }
 
 void bArc(){
     background(0);
 for (int i = 0; i < 2000; i++){
-
-strokeWeight(random(0.3, 0.7));
-
-float rArc = random(0.0, 6.28);
-
-stroke(100, 200, 255, random(30, 80));
-arc (random(200, width - 200), random(200, height - 200), 100, 100, rArc, rArc + 1.0);
-  
-}
+  strokeWeight(random(0.3, 0.7));
+  float rArc = random(0.0, 6.28);
+  stroke(100, 200, 255, random(30, 80));
+  arc (random(200, width - 200), random(200, height - 200), 100, 100, rArc, rArc + 1.0);
+  }
 }
 
 void zArc(){
