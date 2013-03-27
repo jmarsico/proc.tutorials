@@ -146,3 +146,31 @@ class PolygonBlob extends Polygon {
     }
   }
 }
+
+
+// creates a shape-deflecting physics chain in the box2d world from this polygon
+  void createBody() {
+    // for stability the body is always created (and later destroyed)
+    BodyDef bd = new BodyDef();
+    body = box2d.createBody(bd);
+    // if there are more than 0 points (aka a person on screen)...
+    if (getNumPoints() > 0) {
+      // create a vec2d array of vertices in box2d world coordinates from this polygon
+      Vec2[] verts = new Vec2[getNumPoints()];
+      for (int i=0; i<getNumPoints(); i++) {
+        Vec2D v = vertices.get(i);
+        verts[i] = box2d.coordPixelsToWorld(v.x, v.y);
+      }
+      // create a chain from the array of vertices
+      ChainShape chain = new ChainShape();
+      chain.createChain(verts, verts.length);
+      // create fixture in body from the chain (this makes it actually deflect other shapes)
+      body.createFixture(chain, 1);
+    }
+  }
+ 
+  // destroy the box2d body (important!)
+  void destroyBody() {
+    box2d.destroyBody(body);
+  }
+}
